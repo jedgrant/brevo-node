@@ -2250,9 +2250,12 @@ export class ContactsApi {
      * @param identifier Email (urlencoded) OR ID of the contact
      * @param updateContact Values to update a contact
      */
-    public async updateContact (identifier: string, updateContact: UpdateContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/contacts/{identifier}'
-            .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
+    public async updateContact (identifier: string, identifierType = null, updateContact: UpdateContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        let localVarPath = this.basePath + '/contacts/{identifier}'
+                .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
+        if (identifierType) {
+            localVarPath += '?identifierType='+identifierType;
+        }
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
