@@ -2248,6 +2248,7 @@ export class ContactsApi {
      * 
      * @summary Update a contact
      * @param identifier Email (urlencoded) OR ID of the contact
+     * @param identifierType different types of IDs that can be used - "ext_id" | "email_id" | "phone_id" | "contact_id" | null - defaults to email or contact id
      * @param updateContact Values to update a contact
      */
     public async updateContact (identifier: string, identifierType = null, updateContact: UpdateContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
